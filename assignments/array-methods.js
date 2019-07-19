@@ -109,6 +109,39 @@ console.log(ticketPriceTotal);
 
 // Problem 1
 
+// The event sign up form is too small! There's not enough space in the form to hold a company-name longer than 6 characters. Return a list of email addresses we need to contact to let them know they cannot enter the race.
+
+const emailAddresses = runners.filter(function(item, index, array){
+    return item.company_name.length > 6;
+}).map(function(item, index, array){
+    return item.email;
+});
+
+console.log(emailAddresses);
+
 // Problem 2
 
+// If a runner donated $200 or more they get a special emblem on their shirt. 
+// How many shirts should we be prepared to print with special emblems?
+
+// const emblem = [];
+
+const emblem = runners.filter(function(item, array, index){
+    return item.donation >= 200;
+});
+
+console.log(emblem.length);
+
+
 // Problem 3
+
+// Since this event is government sponsered, all government employees have to be disqualified for potential bias. Return a list of names we need to contact
+
+const government = runners.filter(function(item, index, array){
+    let strSplit = item.email.split(".");
+    return strSplit[1] == "gov";
+}).map(function(item, index, array){
+    return [item.first_name, item.last_name];
+});
+
+console.log(government);
